@@ -203,23 +203,62 @@
 			});
 		}
 		open() {
-			if (this.DOM.el.id === 'team-link') {
-				const overlay = document.getElementById('book-overlay');
-				if (overlay) {
-					overlay.style.display = 'block';
-					document.body.style.overflow = 'hidden';
-					const model3d = document.querySelector('.tm-3d-model-container');
-					if (model3d) model3d.style.display = 'none';
-					if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+			const focusIframe = (overlay) => {
+				if (!overlay) return;
+				const iframe = overlay.querySelector('iframe');
+				if (iframe) {
+					setTimeout(() => {
+						try {
+							iframe.focus();
+							if (iframe.contentWindow) iframe.contentWindow.focus();
+						} catch (e) { }
+					}, 50);
+					setTimeout(() => {
+						try {
+							iframe.focus();
+							if (iframe.contentWindow) iframe.contentWindow.focus();
+						} catch (e) { }
+					}, 200);
+				}
+			};
+
+			if (this.DOM.el.id === 'team-link' || this.DOM.el.id === 'cv-link') {
+				if (typeof openBookOverlay === 'function') {
+					openBookOverlay();
+				} else {
+					const overlay = document.getElementById('book-overlay');
+					if (overlay) {
+						overlay.style.display = 'block';
+						document.body.style.overflow = 'hidden';
+						const model3d = document.querySelector('.tm-3d-model-container');
+						if (model3d) model3d.style.display = 'none';
+						if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+						focusIframe(overlay);
+					}
 				}
 			} else if (this.DOM.el.id === 'blog-link') {
-				const overlay = document.getElementById('blog-overlay');
-				if (overlay) {
-					overlay.style.display = 'block';
-					document.body.style.overflow = 'hidden';
-					const model3d = document.querySelector('.tm-3d-model-container');
-					if (model3d) model3d.style.display = 'none';
-					if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+				if (typeof openBlogOverlay === 'function') {
+					openBlogOverlay();
+				} else {
+					const overlay = document.getElementById('blog-overlay');
+					if (overlay) {
+						overlay.style.display = 'block';
+						document.body.style.overflow = 'hidden';
+						const model3d = document.querySelector('.tm-3d-model-container');
+						if (model3d) model3d.style.display = 'none';
+						if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+						focusIframe(overlay);
+					}
+				}
+			} else if (this.DOM.el.id === 'contact-link' || (this.DOM.product && this.DOM.product.getAttribute('title') === 'Kontakt')) {
+				if (typeof openContactOverlay === 'function') {
+					openContactOverlay();
+				} else {
+					const overlay = document.getElementById('contact-overlay');
+					if (overlay) {
+						overlay.style.display = 'flex';
+						document.body.style.overflow = 'hidden';
+					}
 				}
 			} else {
 				DOM.details.fill(this.info);
@@ -270,6 +309,136 @@
 			}
 		});
 	}
+
+	// Contact overlay close button event handler
+	const contactOverlay = document.getElementById('contact-overlay');
+	const closeContactBtn = document.getElementById('close-contact-overlay');
+	if (closeContactBtn && contactOverlay) {
+		closeContactBtn.addEventListener('click', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			contactOverlay.style.display = 'none';
+			document.body.style.overflow = '';
+		});
+		// Close when clicking backdrop
+		contactOverlay.addEventListener('click', (event) => {
+			if (event.target === contactOverlay) {
+				contactOverlay.style.display = 'none';
+				document.body.style.overflow = '';
+			}
+		});
+	}
+
+	const focusOverlayIframe = (overlay) => {
+		if (!overlay) return;
+		const iframe = overlay.querySelector('iframe');
+		if (iframe) {
+			setTimeout(() => {
+				try {
+					iframe.focus();
+					if (iframe.contentWindow) iframe.contentWindow.focus();
+				} catch (e) { }
+			}, 50);
+			setTimeout(() => {
+				try {
+					iframe.focus();
+					if (iframe.contentWindow) iframe.contentWindow.focus();
+				} catch (e) { }
+			}, 200);
+		}
+	};
+
+	// Oak Wood Navigation Panel Buttons
+	const oakBlogBtn = document.getElementById('oak-blog-btn');
+	if (oakBlogBtn) {
+		oakBlogBtn.addEventListener('click', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			const overlay = document.getElementById('blog-overlay');
+			if (overlay) {
+				overlay.style.display = 'block';
+				document.body.style.overflow = 'hidden';
+				if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+				focusOverlayIframe(overlay);
+			}
+		});
+	}
+
+	const oakCvBtn = document.getElementById('oak-cv-btn');
+	if (oakCvBtn) {
+		oakCvBtn.addEventListener('click', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			const overlay = document.getElementById('book-overlay');
+			if (overlay) {
+				overlay.style.display = 'block';
+				document.body.style.overflow = 'hidden';
+				if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+				focusOverlayIframe(overlay);
+			}
+		});
+	}
+
+	const oakContactBtn = document.getElementById('oak-contact-btn');
+	if (oakContactBtn) {
+		oakContactBtn.addEventListener('click', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			if (contactOverlay) {
+				contactOverlay.style.display = 'flex';
+				document.body.style.overflow = 'hidden';
+			}
+		});
+	}
+
+	// Global keyboard shortcuts for overlays
+	document.addEventListener('keydown', (event) => {
+		const bookOverlay = document.getElementById('book-overlay');
+		const blogOverlay = document.getElementById('blog-overlay');
+		const contactOverlay = document.getElementById('contact-overlay');
+
+		// Escape key to close any active overlay
+		if (event.key === 'Escape' || event.key === 'Esc') {
+			let closed = false;
+			if (bookOverlay && bookOverlay.style.display === 'block') {
+				bookOverlay.style.display = 'none';
+				closed = true;
+			}
+			if (blogOverlay && blogOverlay.style.display === 'block') {
+				blogOverlay.style.display = 'none';
+				closed = true;
+			}
+			if (contactOverlay && contactOverlay.style.display === 'flex') {
+				contactOverlay.style.display = 'none';
+				closed = true;
+			}
+			if (closed) {
+				document.body.style.overflow = '';
+				const model3d = document.querySelector('.tm-3d-model-container');
+				if (model3d) model3d.style.display = 'flex';
+			}
+			return;
+		}
+
+		// Forward Arrow keys to active booklet overlay
+		if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+			let activeIframe = null;
+			if (bookOverlay && bookOverlay.style.display === 'block') {
+				activeIframe = bookOverlay.querySelector('iframe');
+			} else if (blogOverlay && blogOverlay.style.display === 'block') {
+				activeIframe = blogOverlay.querySelector('iframe');
+			}
+
+			if (activeIframe) {
+				event.preventDefault();
+				try {
+					if (activeIframe.contentWindow) {
+						activeIframe.contentWindow.postMessage({ type: 'KEYDOWN', key: event.key }, '*');
+					}
+				} catch (e) { }
+			}
+		}
+	});
 };
 
 

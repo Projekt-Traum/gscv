@@ -117,7 +117,7 @@
     <link rel="stylesheet" href="fontawesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-    <link rel="stylesheet" href="css/tooplate-style.css?v=11.5">
+    <link rel="stylesheet" href="css/tooplate-style.css?v=13.8">
 
     <script>
         document.documentElement.classList.add("js");
@@ -131,14 +131,110 @@
     <!-- Interactive Book Overlay (Lebenslauf - CV_4) -->
     <div id="book-overlay">
         <button id="close-book-overlay" title="Schließen"><i class="fas fa-times"></i></button>
-        <iframe src="lb/index.html?v=3.4" title="Lebenslauf"></iframe>
+        <iframe src="lb/index.html?v=3.6" title="Lebenslauf"></iframe>
     </div>
 
     <!-- Interactive Blog Overlay (Blog) -->
     <div id="blog-overlay">
         <button id="close-blog-overlay" title="Schließen"><i class="fas fa-times"></i></button>
-        <iframe src="blog/index.html?v=3.4" title="Blog"></iframe>
+        <iframe src="blog/index.html?v=3.3" title="Blog"></iframe>
+    </div>
 
+    <!-- Interactive Contact Overlay (Kontakt) -->
+    <div id="contact-overlay">
+        <div class="tm-contact-card-modal">
+            <button id="close-contact-overlay" onclick="closeContactOverlay(event)" title="Schließen"><i
+                    class="fas fa-times"></i></button>
+            <div class="tm-contact-card-header">
+                <span class="tm-contact-badge">Projekt Traum</span>
+                <h2 class="tm-contact-name">Gregor Skrzeszewski</h2>
+                <p class="tm-contact-sub">Innenarchitektur &bull; Fachkompetenz im Innenausbau</p>
+                <div class="tm-contact-divider-gold"></div>
+            </div>
+            <div class="tm-contact-card-body">
+                <p class="tm-contact-intro-text">
+                    Haben Sie Fragen, ein konkretes Projekt oder ein interessantes Angebot? Schreiben Sie mir gerne oder
+                    rufen Sie mich an – ich freue mich auf Ihre Kontaktaufnahme.
+                </p>
+                <div class="tm-contact-items-list">
+                    <a href="mailto:gregor.skrzeszewski@projekt-traum.de" class="tm-contact-item-link"
+                        title="E-Mail senden">
+                        <div class="tm-contact-item-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="tm-contact-item-info">
+                            <span class="tm-contact-item-label">E-Mail</span>
+                            <span class="tm-contact-item-val">gregor.skrzeszewski@projekt-traum.de</span>
+                        </div>
+                    </a>
+                    <a href="tel:+4916099657999" class="tm-contact-item-link" title="Anrufen">
+                        <div class="tm-contact-item-icon"><i class="fas fa-phone"></i></div>
+                        <div class="tm-contact-item-info">
+                            <span class="tm-contact-item-label">Telefon / Mobil</span>
+                            <span class="tm-contact-item-val">+49 160 99657999</span>
+                        </div>
+                    </a>
+                    <div class="tm-contact-item-static">
+                        <div class="tm-contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="tm-contact-item-info">
+                            <span class="tm-contact-item-label">Standort</span>
+                            <span class="tm-contact-item-val">Edith-Stein-Anlage 16, 53123 Bonn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tm-contact-card-actions">
+                <a href="mailto:gregor.skrzeszewski@projekt-traum.de"
+                    class="tm-contact-action-btn tm-contact-action-primary">
+                    <i class="fas fa-paper-plane mr-2"></i> E-Mail schreiben
+                </a>
+                <a href="tel:+4916099657999" class="tm-contact-action-btn tm-contact-action-secondary">
+                    <i class="fas fa-phone-alt mr-2"></i> Anrufen
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive PDF Preview Modal (Bewerbung PDF) -->
+    <div id="pdf-modal-main" class="pdf-modal" style="display:none;">
+        <div class="pdf-modal-backdrop" onclick="closePdfModalMain(event)"></div>
+        <div class="pdf-modal-card">
+            <div class="pdf-modal-header">
+                <div class="pdf-modal-title">
+                    <span style="font-size: 16px;">📄</span>
+                    <span>Bewerbungsunterlagen – Gregor Skrzeszewski</span>
+                </div>
+                <div class="pdf-modal-actions">
+                    <a href="img/Bewerbung_Gregor_Skrzeszewski.pdf" target="_blank" class="pdf-modal-btn-view" title="In neuem Fenster / Tab öffnen">
+                        <i class="fas fa-external-link-alt"></i> Vollbild
+                    </a>
+                    <a href="img/Bewerbung_Gregor_Skrzeszewski.pdf" download="Bewerbung_Gregor_Skrzeszewski.pdf" class="pdf-modal-btn-download" title="PDF-Datei herunterladen">
+                        <i class="fas fa-download"></i> Herunterladen
+                    </a>
+                    <button type="button" class="pdf-modal-btn-close" onclick="closePdfModalMain(event)" title="Schließen">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <div class="doc-pages-container">
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 1 / 4</span>
+                        <img src="img/bewerbung/page-1.webp?v=1.0" alt="Bewerbung Seite 1" class="doc-page-img" loading="eager">
+                    </div>
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 2 / 4</span>
+                        <img src="img/bewerbung/page-2.webp?v=1.0" alt="Bewerbung Seite 2" class="doc-page-img" loading="lazy">
+                    </div>
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 3 / 4</span>
+                        <img src="img/bewerbung/page-3.webp?v=1.0" alt="Bewerbung Seite 3" class="doc-page-img" loading="lazy">
+                    </div>
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 4 / 4</span>
+                        <img src="img/bewerbung/page-4.webp?v=1.0" alt="Bewerbung Seite 4" class="doc-page-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -150,10 +246,97 @@
     <!-- <iframe id="html-bg-frame" src="img/antigravity_wallpaper.html" title="HTML Background"></iframe> -->
 
     <div id="tm-bg"></div>
-    <!-- 3D Model Image - Pozycjonowany niezależnie na tapecie (pod treścią strony) -->
+
+    <!-- Interaktywna warstwa tapety: Animowana ramka fotograficzna w centrum, wizytówka po lewej oraz panel nawigacyjny na dębowej desce -->
+    <div class="tm-wallpaper-interactive-layer">
+        <!-- Lewy panel wizytówki na kamiennym kafelku (pojedynczy baner rozszerzony x2) -->
+        <div class="tm-stone-brand-panel" aria-label="Projekt Traum Informacje">
+            <header class="tm-brand-card">
+                <h1 class="tm-brand-title">Projekt Traum</h1>
+                <div class="tm-brand-divider"></div>
+                <div class="tm-brand-tagline">Innenarchitektur</div>
+                <div class="tm-brand-desc">Fachkompetenz im Innenausbau</div>
+            </header>
+        </div>
+
+        <!-- Centralna animacja ze zdjęciami wnętrz -->
+        <div class="tm-wallpaper-frame" id="tm-wallpaper-frame" title="Projekt Traum - Innenraumübersicht">
+            <div class="tm-frame-slideshow">
+                <div class="tm-frame-slide active" style="background-image: url('img/rooms/kueche.webp');"></div>
+                <div class="tm-frame-slide" style="background-image: url('img/rooms/salon.webp');"></div>
+                <div class="tm-frame-slide" style="background-image: url('img/rooms/flur.webp');"></div>
+                <div class="tm-frame-slide" style="background-image: url('img/rooms/bad.webp');"></div>
+            </div>
+        </div>
+
+        <!-- Panel nawigacji na gładkiej połowie dębowej deski -->
+        <nav class="tm-oak-nav-panel" aria-label="Główna nawigacja">
+            <div class="tm-oak-nav-buttons">
+                <button type="button" class="tm-oak-nav-btn" id="oak-blog-btn" onclick="openBlogOverlay(event)"
+                    title="Blog &amp; Aktuelles">
+                    <span class="tm-oak-btn-icon"><i class="fas fa-newspaper"></i></span>
+                    <span class="tm-oak-btn-text">Blog</span>
+                </button>
+                <button type="button" class="tm-oak-nav-btn" id="oak-cv-btn" onclick="openBookOverlay(event)"
+                    title="Lebenslauf">
+                    <span class="tm-oak-btn-icon"><i class="fas fa-file-alt"></i></span>
+                    <span class="tm-oak-btn-text">Lebenslauf</span>
+                </button>
+                <button type="button" class="tm-oak-nav-btn" id="oak-contact-btn" onclick="openContactOverlay(event)"
+                    title="Kontakt">
+                    <span class="tm-oak-btn-icon"><i class="fas fa-envelope"></i></span>
+                    <span class="tm-oak-btn-text">Kontakt</span>
+                </button>
+            </div>
+
+            <div class="tm-oak-divider"></div>
+
+            <div class="tm-oak-social-links">
+                <div class="tm-oak-social-row">
+                    <a href="https://www.facebook.com/profile.php?id=61590328182499" target="_blank"
+                        rel="noopener noreferrer" class="tm-oak-social-link" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/_Projekt_Traum" target="_blank" rel="noopener noreferrer"
+                        class="tm-oak-social-link" title="X">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="tm-x-svg">
+                            <path
+                                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+                                fill="currentColor" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/_projekt_traum/" target="_blank" rel="noopener noreferrer"
+                        class="tm-oak-social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="tm-oak-social-row">
+                    <a href="https://github.com/Skorpion-DELL" target="_blank" rel="noopener noreferrer"
+                        class="tm-oak-social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/projekt-traum-b64201415" target="_blank"
+                        rel="noopener noreferrer" class="tm-oak-social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Samodzielna stopka strony na tapecie (2 linie tekstu bez ramki) -->
+        <footer class="tm-wallpaper-footer" aria-label="Stopka strony i prawa autorskie">
+            <p class="tm-wallpaper-footer-line">&copy; <span class="tm-current-year">2026</span> Projekt Traum – Gregor
+                Skrzeszewski</p>
+            <p class="tm-wallpaper-footer-line">Alle Rechte vorbehalten.</p>
+        </footer>
+    </div>
+
+    <!-- 3D Model Image - Zablokowany -->
+    <!--
     <div class="tm-3d-model-container">
         <img src="img/3d_model_AI.png?v=2.0" class="tm-3d-model-img" alt="3D Model">
     </div>
+    -->
 
     <div id="tm-wrap">
         <div class="tm-main-content">
@@ -161,21 +344,22 @@
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-5 tm-site-header-col-left align-self-start">
                         <div class="tm-header-flex-container">
-                            <header class="tm-site-header mb-4">
-                                <h1 class="mb-4">Projekt Traum<span class="tm-site-header-name">Gregor
-                                        Skrzeszewski</span></h1>
-                                <div class="tm-header-underline mb-4"></div>
-                                <p>Innenarchitektur<br>Fachkompetenz im Innenausbau</p>
-                            </header>
+                            <div class="tm-mobile-brand-container mb-4">
+                                <header class="tm-brand-card">
+                                    <h1 class="tm-brand-title">Projekt Traum</h1>
+                                    <div class="tm-brand-divider"></div>
+                                    <div class="tm-brand-tagline">Innenarchitektur</div>
+                                    <div class="tm-brand-desc">Fachkompetenz im Innenausbau</div>
+                                </header>
+                            </div>
 
-                            <img src="img/underline_2.png" class="tm-mobile-underline" alt="Dekoracyjna linia">
-
-                            <div class="tm-photo-banner mb-4">
+                            <!-- Baner fotograficzny z animacją wnętrz (widoczny na telefonach) -->
+                            <div class="tm-photo-banner mb-4" aria-label="Projekt Traum Referenzprojekte">
                                 <div class="slideshow-container">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                                    <div class="slide" title="Küche - Projekt Traum"></div>
+                                    <div class="slide" title="Wohnzimmer - Projekt Traum"></div>
+                                    <div class="slide" title="Flur - Projekt Traum"></div>
+                                    <div class="slide" title="Badezimmer - Projekt Traum"></div>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +370,7 @@
 
                                 <!-- BLOG GRID ITEM -->
                                 <section class="grid__item" id="blog-link">
-                                    <div class="product" title="Blog">
+                                    <div class="product" title="Blog" onclick="openBlogOverlay(event)">
                                         <div class="tm-nav-link">
                                             <i class="fas fa-newspaper fa-3x tm-nav-icon"></i>
                                             <span class="tm-nav-text">Blog</span>
@@ -253,7 +437,7 @@
 
                                 <!-- LEBENSLAUF GRID ITEM -->
                                 <section class="grid__item" id="team-link">
-                                    <div class="product" title="Lebenslauf">
+                                    <div class="product" title="Lebenslauf" onclick="openBookOverlay(event)">
                                         <div class="tm-nav-link">
                                             <i class="fas fa-file-alt fa-3x tm-nav-icon"></i>
                                             <span class="tm-nav-text">Lebenslauf</span>
@@ -321,11 +505,11 @@
                                                         <!-- Section E: PDF Download Button -->
                                                         <div class="cv-section cv-section-e">
                                                             <div class="mt-4">
-                                                                <a href="img/Bewerbung_Gregor_Skrzeszewski.pdf?v=1.1"
+                                                                <button type="button"
                                                                     class="btn btn-primary cv-download-btn"
-                                                                    target="_blank">
-                                                                    📄 PDF-Version herunterladen
-                                                                </a>
+                                                                    onclick="openPdfModalMain(event)">
+                                                                    📄 Bewerbungsunterlagen (PDF)
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -410,8 +594,8 @@
                                 </section>
 
                                 <!-- KONTAKT GRID ITEM -->
-                                <section class="grid__item">
-                                    <div class="product" title="Kontakt">
+                                <section class="grid__item" id="contact-link">
+                                    <div class="product" title="Kontakt" onclick="openContactOverlay(event)">
                                         <div class="tm-nav-link">
                                             <i class="fas fa-envelope fa-3x tm-nav-icon"></i>
                                             <span class="tm-nav-text">Kontakt</span>
@@ -440,7 +624,7 @@
                                                                     href="mailto:gregor.skrzeszewski@projekt-traum.de">gregor.skrzeszewski@<br>projekt-traum.de</a>
                                                             </li>
                                                             <li class="mb-2"><i class="fas fa-phone mr-2"></i>
-                                                                <a href="tel:+4916099657999">+49 (0) 160
+                                                                <a href="tel:+4916099657999">+49 160
                                                                     99657999</a>
                                                             </li>
                                                             <li class="mb-2 contact-flex"><i
@@ -494,8 +678,89 @@
     <script src="slick/slick.min.js"></script> <!-- http://kenwheeler.github.io/slick/ -->
     <script src="js/anime.min.js"></script> <!-- http://animejs.com/ -->
     <script src="js/theme-extractor.js"></script>
-    <script src="js/main.js?v=1.6"></script>
+    <script src="js/frame-slider.js"></script>
+    <script src="js/main.js?v=2.3"></script>
     <script>
+        function openBlogOverlay(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var overlay = document.getElementById('blog-overlay');
+            if (overlay) {
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+                var iframe = overlay.querySelector('iframe');
+                if (iframe) {
+                    setTimeout(function () {
+                        try {
+                            iframe.focus();
+                            if (iframe.contentWindow) iframe.contentWindow.focus();
+                        } catch (e) { }
+                    }, 50);
+                    setTimeout(function () {
+                        try {
+                            iframe.focus();
+                            if (iframe.contentWindow) iframe.contentWindow.focus();
+                        } catch (e) { }
+                    }, 200);
+                }
+            }
+        }
+        function openBookOverlay(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var overlay = document.getElementById('book-overlay');
+            if (overlay) {
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                if (window.ThemeExtractor) window.ThemeExtractor.syncIframes();
+                var iframe = overlay.querySelector('iframe');
+                if (iframe) {
+                    setTimeout(function () {
+                        try {
+                            iframe.focus();
+                            if (iframe.contentWindow) iframe.contentWindow.focus();
+                        } catch (e) { }
+                    }, 50);
+                    setTimeout(function () {
+                        try {
+                            iframe.focus();
+                            if (iframe.contentWindow) iframe.contentWindow.focus();
+                        } catch (e) { }
+                    }, 200);
+                }
+            }
+        }
+        function openContactOverlay(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var overlay = document.getElementById('contact-overlay');
+            if (overlay) {
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        function closeContactOverlay(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var overlay = document.getElementById('contact-overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+        function openPdfModalMain(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var modal = document.getElementById('pdf-modal-main');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        function closePdfModalMain(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var modal = document.getElementById('pdf-modal-main');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
 
         function setupFooter() {
             var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;

@@ -85,23 +85,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function updateUI() {
+        if (currentPageIndicator) {
+            if (currentFlipped === 0) {
+                currentPageIndicator.textContent = "1";
+            } else if (currentFlipped === totalLeaves) {
+                currentPageIndicator.textContent = totalLeaves * 2;
+            } else {
+                const pageNumStart = currentFlipped * 2;
+                const pageNumEnd = pageNumStart + 1;
+                currentPageIndicator.textContent = `${pageNumStart}-${pageNumEnd}`;
+            }
+        }
+
         if (currentFlipped === 0) {
-            currentPageIndicator.textContent = "1";
             bookContainer.classList.add('closed-front');
             bookContainer.classList.remove('closed-back');
         } else if (currentFlipped === totalLeaves) {
-            currentPageIndicator.textContent = totalLeaves * 2;
             bookContainer.classList.add('closed-back');
             bookContainer.classList.remove('closed-front');
         } else {
-            const pageNumStart = currentFlipped * 2;
-            const pageNumEnd = pageNumStart + 1;
-            currentPageIndicator.textContent = `${pageNumStart}-${pageNumEnd}`;
             bookContainer.classList.remove('closed-front', 'closed-back');
         }
         
-        prevBtn.disabled = (currentFlipped === 0);
-        nextBtn.disabled = (currentFlipped === totalLeaves);
+        if (prevBtn) prevBtn.disabled = (currentFlipped === 0);
+        if (nextBtn) nextBtn.disabled = (currentFlipped === totalLeaves);
     }
     
     function flipNext() {
@@ -157,14 +164,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Navigation Controls
-    prevBtn.addEventListener('click', flipPrev);
-    nextBtn.addEventListener('click', flipNext);
+    if (prevBtn) prevBtn.addEventListener('click', flipPrev);
+    if (nextBtn) nextBtn.addEventListener('click', flipNext);
     
     document.addEventListener('keydown', (e) => {
-        if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
-        if (e.key === 'ArrowRight') flipNext();
-        else if (e.key === 'ArrowLeft') flipPrev();
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            flipNext();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            flipPrev();
+        }
     });
+
+    // Cross-window message listener (when parent window forwards key events)
+    window.addEventListener('message', (e) => {
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+        if (e.data && e.data.type === 'KEYDOWN') {
+            if (e.data.key === 'ArrowRight') {
+                flipNext();
+            } else if (e.data.key === 'ArrowLeft') {
+                flipPrev();
+            }
+        }
+    });
+
+    // Auto-focus on load
+    try { window.focus(); } catch(err) {}
 
     // --- HTML RENDERERS ---
 
@@ -335,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const allLeaves = document.querySelectorAll('.leaf');
         totalLeaves = allLeaves.length;
-        totalPagesIndicator.textContent = totalLeaves * 2;
+        if (totalPagesIndicator) totalPagesIndicator.textContent = totalLeaves * 2;
 
         updateZIndexes();
         updateUI();
@@ -677,16 +704,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        const baseWidth = 960;
-        const baseHeight = 720; 
+        // Base dimensions of the 16:9 desktop layout
+        // Scaling matches the wallpaper so the book cover covers the frame across resolutions
+        const scaleW = windowWidth / 1920;
+        const scaleH = windowHeight / 1080;
+        const wallpaperScale = Math.max(scaleW, scaleH);
         
-        const targetWidth = windowWidth - 80;
-        const targetHeight = windowHeight - 80;
+        // Ensure 2-page open book + shortcuts tip fit inside viewport (with margins)
+        const maxFitScale = Math.min((windowWidth - 40) / 960, (windowHeight - 40) / 660);
+        const scale = Math.min(wallpaperScale, maxFitScale);
         
-        let scale = Math.min(targetWidth / baseWidth, targetHeight / baseHeight) * 0.75;
-        scale = Math.max(0.41, Math.min(0.95, scale));
+        // Snap coordinates to exact integer pixels to eliminate sub-pixel font raster blur
+        const targetX = Math.round(windowWidth * 0.5103);
+        const targetY = Math.round(windowHeight * 0.4866);
         
-        wrapper.style.transform = `scale(${scale})`;
+        wrapper.style.left = `${targetX}px`;
+        wrapper.style.top = `${targetY}px`;
+        wrapper.style.transform = `translate3d(-50%, -50%, 0) scale(${scale})`;
         wrapper.style.transformOrigin = 'center center';
     }
 

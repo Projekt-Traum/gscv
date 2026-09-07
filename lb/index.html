@@ -8,10 +8,13 @@
     <!-- Google Fonts: Cormorant Garamond (Serif) & Inter (Sans-serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="../fontawesome/css/fontawesome-all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.4">
+    <link rel="stylesheet" href="css/style.css?v=3.2">
     
     <style>
         /* Specific enhancements for Gregor Skrzeszewski's profile content */
@@ -24,9 +27,10 @@
         }
         .skills-bullet-list li {
             font-family: var(--body-font);
-            font-size: 10px;
+            font-size: 11px;
+            font-weight: 450;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.45;
             padding-left: 14px;
             position: relative;
         }
@@ -36,7 +40,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            font-size: 10px;
+            font-size: 11px;
         }
         .profile-img-frame {
             width: 100%;
@@ -54,13 +58,14 @@
         }
         .personal-details-table td {
             font-family: var(--body-font);
-            font-size: 10px;
-            padding: 2.5px 0;
+            font-size: 11px;
+            font-weight: 450;
+            padding: 3px 0;
             color: var(--text-muted);
             vertical-align: top;
         }
         .personal-details-table td.label-cell {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-dark);
             width: 120px;
         }
@@ -96,6 +101,241 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        /* PDF Preview Modal */
+        .pdf-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+        .pdf-modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 8, 14, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .pdf-modal-card {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 960px;
+            height: 92vh;
+            background: #1c1822;
+            border: 1px solid rgba(218, 165, 95, 0.9);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.75), 0 0 30px rgba(207,163,101,0.3);
+            animation: pdfPop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        @keyframes pdfPop {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .pdf-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            background: rgba(28, 24, 34, 0.98);
+            border-bottom: 1px solid rgba(218, 165, 95, 0.4);
+            gap: 10px;
+        }
+        .pdf-modal-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #f8f6f0;
+            font-family: var(--body-font, sans-serif);
+            font-size: 13px;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .pdf-modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .pdf-modal-btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(218, 165, 95, 0.5);
+            color: #f8f6f0 !important;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .pdf-modal-btn-view:hover {
+            background: rgba(218, 165, 95, 0.2);
+            border-color: #f4d08b;
+            color: #f4d08b !important;
+        }
+        .pdf-modal-btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #cfa365, #f4d08b);
+            color: #121016 !important;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(207, 163, 101, 0.4);
+            transition: all 0.2s ease;
+        }
+        .pdf-modal-btn-download:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(207, 163, 101, 0.6);
+        }
+        .pdf-modal-btn-close {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(218, 165, 95, 0.4);
+            color: #f8f6f0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+        .pdf-modal-btn-close:hover {
+            background: #cfa365;
+            color: #121016;
+            transform: scale(1.1) rotate(90deg);
+        }
+        .pdf-modal-body {
+            flex: 1;
+            width: 100%;
+            background: #141219;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            padding: 20px 16px;
+            box-sizing: border-box;
+        }
+        .pdf-modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .pdf-modal-body::-webkit-scrollbar-track {
+            background: rgba(20, 18, 25, 0.8);
+        }
+        .pdf-modal-body::-webkit-scrollbar-thumb {
+            background: rgba(207, 163, 101, 0.4);
+            border-radius: 4px;
+        }
+        .pdf-modal-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(207, 163, 101, 0.7);
+        }
+        .doc-pages-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            max-width: 820px;
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+        .doc-page-card {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 1px rgba(207, 163, 101, 0.4);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .doc-page-badge {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: rgba(20, 18, 25, 0.88);
+            color: #f4d08b;
+            font-family: var(--body-font, sans-serif);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(207, 163, 101, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 5;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+        .doc-page-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        @media (max-width: 767px) {
+            .pdf-modal {
+                padding: 8px;
+            }
+            .pdf-modal-card {
+                height: 96vh;
+                border-radius: 14px;
+            }
+            .pdf-modal-header {
+                padding: 10px 12px;
+                gap: 6px;
+            }
+            .pdf-modal-title {
+                font-size: 11.5px;
+                max-width: 140px;
+            }
+            .pdf-modal-btn-view {
+                font-size: 10px;
+                padding: 5px 8px;
+            }
+            .pdf-modal-btn-download {
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+            .pdf-modal-btn-close {
+                width: 28px;
+                height: 28px;
+                font-size: 11px;
+            }
+            .pdf-modal-body {
+                padding: 12px 6px;
+            }
+            .doc-pages-container {
+                gap: 14px;
+            }
+            .doc-page-badge {
+                top: 8px;
+                right: 8px;
+                font-size: 9.5px;
+                padding: 2px 8px;
+            }
         }
     </style>
 </head>
@@ -134,7 +374,7 @@
                             
                             <!-- Large Image -->
                             <div class="image-container cover-hero">
-                                <img src="../img/raum_1.jpg" alt="Referenzprojekt Innenausbau">
+                                <img src="../img/rooms/kueche.webp" alt="Referenzprojekt Innenausbau">
                             </div>
                             
                             <!-- Circle Emblem (Logo) -->
@@ -169,23 +409,23 @@
                                 <div class="employment-timeline">
                                     <h4 class="section-subtitle">WERDEGANG</h4>
                                     <div class="timeline-item" style="margin-bottom: 10px;">
-                                        <span class="year font-serif" style="font-size: 12px; min-width: 65px; display: inline-block;">Seit 10/24</span>
+                                        <span class="year font-serif" style="font-size: 12.5px; font-weight: 700; min-width: 65px; display: inline-block;">Seit 10/24</span>
                                         <div class="timeline-desc">
-                                            <strong>Berufliche Neuorientierung</strong>
+                                            <strong style="font-size: 11px; font-weight: 600;">Berufliche Neuorientierung</strong>
                                         </div>
                                     </div>
                                     <div class="timeline-item" style="margin-bottom: 10px;">
-                                        <span class="year font-serif" style="font-size: 12px; min-width: 65px; display: inline-block;">2018–2024</span>
+                                        <span class="year font-serif" style="font-size: 12.5px; font-weight: 700; min-width: 65px; display: inline-block;">2018–2024</span>
                                         <div class="timeline-desc">
-                                            <strong>Fliesenleger &amp; Trockenbauer</strong>
-                                            <p class="body-text" style="font-size: 9px;">Selbstständiger Unternehmer, Bonn</p>
+                                            <strong style="font-size: 11px; font-weight: 600;">Fliesenleger &amp; Trockenbauer</strong>
+                                            <p class="body-text" style="font-size: 10.5px; font-weight: 450;">Selbstständiger Unternehmer, Bonn</p>
                                         </div>
                                     </div>
                                     <div class="timeline-item" style="margin-bottom: 10px;">
-                                        <span class="year font-serif" style="font-size: 12px; min-width: 65px; display: inline-block;">2016–2018</span>
+                                        <span class="year font-serif" style="font-size: 12.5px; font-weight: 700; min-width: 65px; display: inline-block;">2016–2018</span>
                                         <div class="timeline-desc">
-                                            <strong>Maler- &amp; Tapezierer</strong>
-                                            <p class="body-text" style="font-size: 9px;">Firma L. Schneider, Bonn</p>
+                                            <strong style="font-size: 11px; font-weight: 600;">Maler- &amp; Tapezierer</strong>
+                                            <p class="body-text" style="font-size: 10.5px; font-weight: 450;">Firma L. Schneider, Bonn</p>
                                         </div>
                                     </div>
                                 </div>
@@ -248,7 +488,7 @@
                                 <table class="personal-details-table" style="margin-top: 0;">
                                     <tr>
                                         <td class="label-cell">Ausbildung:</td>
-                                        <td>Berufsschule der Marine<br><span style="font-size: 9px; color: var(--text-muted);">Abschluss: Schiffsmaschinenmonteur (1995)</span></td>
+                                        <td>Berufsschule der Marine<br><span style="font-size: 10px; font-weight: 450; color: var(--text-muted);">Abschluss: Schiffsmaschinenmonteur (1995)</span></td>
                                     </tr>
                                     <tr>
                                         <td class="label-cell">EDV-Kenntnisse:</td>
@@ -261,11 +501,11 @@
                                 </table>
                             </div>
                             
-                            <!-- PDF Download Button -->
+                            <!-- PDF Download / Preview Button -->
                             <div class="pdf-download-container">
-                                <a href="../img/Bewerbung_Gregor_Skrzeszewski.pdf" class="pdf-btn" target="_blank">
-                                    📄 Bewerbungs-PDF herunterladen
-                                </a>
+                                <button type="button" class="pdf-btn" onclick="openPdfModal(event)" title="Bewerbung ansehen &amp; herunterladen" style="border:none; cursor:pointer;">
+                                    📄 Bewerbungsunterlagen (PDF)
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -297,14 +537,14 @@
                                 <!-- Col 2: Image 2 -->
                                 <div class="project-col-img-1">
                                     <div class="image-container height-full">
-                                        <img src="../img/raum_2.jpeg" alt="Trockenbau Decke Beleuchtung">
+                                        <img src="../img/rooms/trockenbau_licht.webp" alt="Trockenbau Decke Beleuchtung">
                                     </div>
                                 </div>
                                 
                                 <!-- Col 3: Image 3 -->
                                 <div class="project-col-img-2">
                                     <div class="image-container height-full">
-                                        <img src="../img/raum_3.jpg" alt="Innenausbau Flur">
+                                        <img src="../img/rooms/flur.webp" alt="Innenausbau Flur">
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +566,7 @@
                             <div class="layout-2-content">
                                 <!-- Top Landscape Image -->
                                 <div class="image-container landscape-hero">
-                                    <img src="../img/raum_1.jpg" alt="Fliesenverlegung Raum">
+                                    <img src="../img/rooms/bad.webp" alt="Fliesenverlegung Travertin Bad">
                                 </div>
                                 
                                 <h4 class="section-subtitle text-center">BODEN- &amp; FLIESENARBEITEN</h4>
@@ -353,7 +593,7 @@
                             <div class="layout-3-grid">
                                 <!-- Left Narrow Image -->
                                 <div class="image-container narrow-left">
-                                    <img src="../img/raum_5.jpg" alt="Elektrik Sanierung">
+                                    <img src="../img/rooms/technik_ausbau.webp" alt="Gewerkeübergreifender Ausbau &amp; Elektrik">
                                 </div>
                                 
                                 <!-- Right Text -->
@@ -383,7 +623,7 @@
                             <div class="layout-4-content">
                                 <!-- Center Offset Image -->
                                 <div class="image-container offset-center">
-                                    <img src="../img/raum_6.jpg" alt="Renovierung Trockenbauwand">
+                                    <img src="../img/rooms/schlafzimmer.webp" alt="Innenausbau &amp; Bautenschutz">
                                 </div>
                                 
                                 <div class="layout-4-text-bottom">
@@ -428,31 +668,75 @@
             </div>
         </div>
         
-        <!-- Controls overlay -->
-        <div class="controls-container">
-            <button id="prevBtn" class="control-btn" disabled>
-                <span class="arrow">&larr;</span> Zurück
-            </button>
-            
-            <div class="page-indicator">
-                Seite <span id="currentPage">1</span> von <span id="totalPages">8</span>
-            </div>
-            
-            <button id="nextBtn" class="control-btn">
-                Weiter <span class="arrow">&rarr;</span>
-            </button>
-        </div>
-        
         <!-- Keyboard shortcuts tip -->
         <div class="shortcuts-tip">
             Tipp: Sie können die Tasten <span class="key">&larr;</span> und <span class="key">&rarr;</span> auf Ihrer Tastatur verwenden oder direkt auf die Seiten klicken, um umzublättern.
         </div>
+        </div>
+    </div>
         
+    <!-- PDF Preview Modal -->
+    <div id="pdf-modal" class="pdf-modal" style="display:none;">
+        <div class="pdf-modal-backdrop" onclick="closePdfModal(event)"></div>
+        <div class="pdf-modal-card">
+            <div class="pdf-modal-header">
+                <div class="pdf-modal-title">
+                    <span style="font-size: 16px;">📄</span>
+                    <span>Bewerbungsunterlagen – Gregor Skrzeszewski</span>
+                </div>
+                <div class="pdf-modal-actions">
+                    <a href="../img/Bewerbung_Gregor_Skrzeszewski.pdf" target="_blank" class="pdf-modal-btn-view" title="In neuem Fenster / Tab öffnen">
+                        <i class="fas fa-external-link-alt"></i> Vollbild
+                    </a>
+                    <a href="../img/Bewerbung_Gregor_Skrzeszewski.pdf" download="Bewerbung_Gregor_Skrzeszewski.pdf" class="pdf-modal-btn-download" title="PDF-Datei herunterladen">
+                        <i class="fas fa-download"></i> Herunterladen
+                    </a>
+                    <button type="button" class="pdf-modal-btn-close" onclick="closePdfModal(event)" title="Schließen">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <div class="doc-pages-container">
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 1 / 4</span>
+                        <img src="../img/bewerbung/page-1.webp?v=1.0" alt="Bewerbung Seite 1" class="doc-page-img" loading="eager">
+                    </div>
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 2 / 4</span>
+                        <img src="../img/bewerbung/page-2.webp?v=1.0" alt="Bewerbung Seite 2" class="doc-page-img" loading="lazy">
+                    </div>
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 3 / 4</span>
+                        <img src="../img/bewerbung/page-3.webp?v=1.0" alt="Bewerbung Seite 3" class="doc-page-img" loading="lazy">
+                    </div>
+                    <div class="doc-page-card">
+                        <span class="doc-page-badge">Seite 4 / 4</span>
+                        <img src="../img/bewerbung/page-4.webp?v=1.0" alt="Bewerbung Seite 4" class="doc-page-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Script File -->
     <script src="../js/theme-extractor.js"></script>
-    <script src="js/script.js?v=3.2"></script>
+    <script src="js/script.js?v=3.3"></script>
+    <script>
+        function openPdfModal(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var modal = document.getElementById('pdf-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+        function closePdfModal(event) {
+            if (event) { event.preventDefault(); event.stopPropagation(); }
+            var modal = document.getElementById('pdf-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.4">
+    <link rel="stylesheet" href="css/style.css?v=3.2">
 
     <style>
         /* Specific enhancements for Gregor Skrzeszewski's profile content */
@@ -31,9 +31,10 @@
 
         .skills-bullet-list li {
             font-family: var(--body-font);
-            font-size: 10px;
+            font-size: 11px;
+            font-weight: 450;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.45;
             padding-left: 14px;
             position: relative;
         }
@@ -44,7 +45,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            font-size: 10px;
+            font-size: 11px;
         }
 
         .profile-img-frame {
@@ -65,14 +66,15 @@
 
         .personal-details-table td {
             font-family: var(--body-font);
-            font-size: 10px;
-            padding: 2.5px 0;
+            font-size: 11px;
+            font-weight: 450;
+            padding: 3px 0;
             color: var(--text-muted);
             vertical-align: top;
         }
 
         .personal-details-table td.label-cell {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-dark);
             width: 120px;
         }
@@ -152,7 +154,7 @@
 
                                 <!-- Large Image -->
                                 <div class="image-container cover-hero">
-                                    <img src="../img/raum_1.jpg" alt="Referenzprojekt Innenausbau">
+                                    <img src="../img/rooms/salon.webp" alt="Projekt-Traum Blog">
                                 </div>
 
                                 <!-- Circle Emblem (Logo) -->
@@ -251,21 +253,6 @@
                 </div>
             </div>
 
-            <!-- Controls overlay -->
-            <div class="controls-container">
-                <button id="prevBtn" class="control-btn" disabled>
-                    <span class="arrow">&larr;</span> Zurück
-                </button>
-
-                <div class="page-indicator">
-                    Seite <span id="currentPage">1</span> von <span id="totalPages">100</span>
-                </div>
-
-                <button id="nextBtn" class="control-btn">
-                    Weiter <span class="arrow">&rarr;</span>
-                </button>
-            </div>
-
             <!-- Keyboard shortcuts tip -->
             <div class="shortcuts-tip">
                 Tipp: Sie können die Tasten <span class="key">&larr;</span> und <span class="key">&rarr;</span> auf
@@ -277,7 +264,7 @@
 
     <!-- Script File -->
     <script src="../js/theme-extractor.js"></script>
-    <script src="js/script.js?v=3.2"></script>
+    <script src="js/script.js?v=3.3"></script>
 </body>
 
 </html>

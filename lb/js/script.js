@@ -44,24 +44,31 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function updateUI() {
         // Update page indicator text
+        if (currentPageIndicator) {
+            if (currentFlipped === 0) {
+                currentPageIndicator.textContent = "1";
+            } else if (currentFlipped === totalLeaves) {
+                currentPageIndicator.textContent = totalLeaves * 2;
+            } else {
+                const pageNumStart = currentFlipped * 2;
+                const pageNumEnd = pageNumStart + 1;
+                currentPageIndicator.textContent = `${pageNumStart}-${pageNumEnd}`;
+            }
+        }
+
         if (currentFlipped === 0) {
-            currentPageIndicator.textContent = "1";
             bookContainer.classList.add('closed-front');
             bookContainer.classList.remove('closed-back');
         } else if (currentFlipped === totalLeaves) {
-            currentPageIndicator.textContent = totalLeaves * 2;
             bookContainer.classList.add('closed-back');
             bookContainer.classList.remove('closed-front');
         } else {
-            const pageNumStart = currentFlipped * 2;
-            const pageNumEnd = pageNumStart + 1;
-            currentPageIndicator.textContent = `${pageNumStart}-${pageNumEnd}`;
             bookContainer.classList.remove('closed-front', 'closed-back');
         }
         
         // Update button states
-        prevBtn.disabled = (currentFlipped === 0);
-        nextBtn.disabled = (currentFlipped === totalLeaves);
+        if (prevBtn) prevBtn.disabled = (currentFlipped === 0);
+        if (nextBtn) nextBtn.disabled = (currentFlipped === totalLeaves);
     }
     
     /**
@@ -117,8 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     
     // Control Buttons
-    nextBtn.addEventListener('click', flipNext);
-    prevBtn.addEventListener('click', flipPrev);
+    if (nextBtn) nextBtn.addEventListener('click', flipNext);
+    if (prevBtn) prevBtn.addEventListener('click', flipPrev);
     
     // Click on leaves directly
     leaves.forEach((leaf) => {
@@ -142,40 +149,58 @@ document.addEventListener('DOMContentLoaded', () => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
         
-        // If mobile/tablet layout (width <= 990px), we don't scale (reset style)
+        // If mobile/tablet layout (width <= 990px), reset style for normal flow
         if (windowWidth <= 990) {
             wrapper.style.transform = '';
             wrapper.style.transformOrigin = '';
             return;
         }
         
-        // Base dimensions of the book container
-        const baseWidth = 960;
-        // 600px book height + controls + padding
-        const baseHeight = 720; 
+        // Base dimensions of the 16:9 desktop layout
+        // Scaling matches the wallpaper so the book cover covers the frame across resolutions
+        const scaleW = windowWidth / 1920;
+        const scaleH = windowHeight / 1080;
+        const wallpaperScale = Math.max(scaleW, scaleH);
         
-        // We want a minimum margin of 40px on all sides (so 80px total padding)
-        const targetWidth = windowWidth - 80;
-        const targetHeight = windowHeight - 80;
+        // Ensure 2-page open book + shortcuts tip fit inside viewport (with margins)
+        const maxFitScale = Math.min((windowWidth - 40) / 960, (windowHeight - 40) / 660);
+        const scale = Math.min(wallpaperScale, maxFitScale);
         
-        // Calculate the maximum scale factor that fits both width and height, reduced by 25%
-        let scale = Math.min(targetWidth / baseWidth, targetHeight / baseHeight) * 0.75;
+        // Snap coordinates to exact integer pixels to eliminate sub-pixel font raster blur
+        const targetX = Math.round(windowWidth * 0.5103);
+        const targetY = Math.round(windowHeight * 0.4866);
         
-        // Limit scale between 0.41 and 0.95 (to keep design premium and readable)
-        scale = Math.max(0.41, Math.min(0.95, scale));
-        
-        wrapper.style.transform = `scale(${scale})`;
+        wrapper.style.left = `${targetX}px`;
+        wrapper.style.top = `${targetY}px`;
+        wrapper.style.transform = `translate3d(-50%, -50%, 0) scale(${scale})`;
         wrapper.style.transformOrigin = 'center center';
     }
     
     // Keyboard Navigation
     document.addEventListener('keydown', (e) => {
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
         if (e.key === 'ArrowRight') {
+            e.preventDefault();
             flipNext();
         } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
             flipPrev();
         }
     });
+
+    // Cross-window message listener (when parent window forwards key events)
+    window.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'KEYDOWN') {
+            if (e.data.key === 'ArrowRight') {
+                flipNext();
+            } else if (e.data.key === 'ArrowLeft') {
+                flipPrev();
+            }
+        }
+    });
+    
+    // Auto-focus on load
+    try { window.focus(); } catch(err) {}
     
     // Register resize listener for scaling
     window.addEventListener('resize', adjustScale);

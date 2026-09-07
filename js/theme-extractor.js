@@ -12,28 +12,54 @@
 
   // Baza precyzyjnych motywów dla grafik z folderu img/
   const WALLPAPER_PRESETS = {
-    // 1. Aktualna tapeta wal1.webp (Ciemny grafit / Blueprint CAD & Chłodna Platyna / Stal)
+    // 1. Aktualna tapeta wal1.webp / wallpaper_moodboard (Ciepły trawertyn, dąb & szampańskie złoto)
     'wal1': {
-      bgDark: '#0e1013',
-      bgSurfaceGlass: 'rgba(14, 16, 20, 0.90)',
-      bgPopupGlass: 'rgba(14, 16, 20, 0.97)',
-      accent1: '#A2B4C7',
-      accent2: '#E1E9F0',
-      accent1Rgb: '162, 180, 199',
-      accent2Rgb: '225, 233, 240',
-      gradientAccent: 'linear-gradient(135deg, #A2B4C7 0%, #E1E9F0 100%)',
-      textPrimary: '#FFFFFF',
-      textSecondary: 'hsl(215, 12%, 85%)',
-      textMuted: 'hsl(215, 8%, 65%)',
-      borderGlass: 'rgba(255, 255, 255, 0.10)',
-      borderGlassHover: 'rgba(255, 255, 255, 0.30)',
-      bookNavyDeep: '#0D0F12',
-      bookNavyMedium: '#1F242B',
-      bookAccentNavy: 'linear-gradient(135deg, #0D0F12, #1F242B)',
-      bookGoldDark: '#A2B4C7',
-      bookGoldLight: '#E1E9F0',
-      bookGoldGradient: 'linear-gradient(135deg, #A2B4C7 0%, #E1E9F0 50%, #A2B4C7 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(162, 180, 199, 0.16) 0%, rgba(14, 16, 20, 0) 70%)'
+      bgDark: '#181410',
+      bgSurfaceGlass: 'rgba(24, 20, 16, 0.89)',
+      bgPopupGlass: 'rgba(24, 20, 16, 0.96)',
+      accent1: '#CFA365',
+      accent2: '#F5DEB3',
+      accent1Rgb: '207, 163, 101',
+      accent2Rgb: '245, 222, 179',
+      gradientAccent: 'linear-gradient(135deg, #CFA365 0%, #F5DEB3 100%)',
+      textPrimary: '#FAF8F5',
+      textSecondary: 'hsl(38, 14%, 85%)',
+      textMuted: 'hsl(38, 8%, 65%)',
+      borderGlass: 'rgba(255, 255, 255, 0.08)',
+      borderGlassHover: 'rgba(255, 255, 255, 0.25)',
+      bookNavyDeep: '#13100D',
+      bookNavyMedium: '#2B2219',
+      bookAccentNavy: 'linear-gradient(135deg, #13100D, #2B2219)',
+      bookGoldDark: '#CFA365',
+      bookGoldLight: '#F5DEB3',
+      bookGoldGradient: 'linear-gradient(135deg, #CFA365 0%, #F5DEB3 50%, #CFA365 100%)',
+      bookDeskAccent: 'radial-gradient(circle, rgba(207, 163, 101, 0.16) 0%, rgba(24, 20, 16, 0) 70%)',
+      bookTextDark: '#2B2219',
+      bookTextMuted: '#685C50'
+    },
+    'wallpaper_moodboard': {
+      bgDark: '#181410',
+      bgSurfaceGlass: 'rgba(24, 20, 16, 0.89)',
+      bgPopupGlass: 'rgba(24, 20, 16, 0.96)',
+      accent1: '#CFA365',
+      accent2: '#F5DEB3',
+      accent1Rgb: '207, 163, 101',
+      accent2Rgb: '245, 222, 179',
+      gradientAccent: 'linear-gradient(135deg, #CFA365 0%, #F5DEB3 100%)',
+      textPrimary: '#FAF8F5',
+      textSecondary: 'hsl(38, 14%, 85%)',
+      textMuted: 'hsl(38, 8%, 65%)',
+      borderGlass: 'rgba(255, 255, 255, 0.08)',
+      borderGlassHover: 'rgba(255, 255, 255, 0.25)',
+      bookNavyDeep: '#13100D',
+      bookNavyMedium: '#2B2219',
+      bookAccentNavy: 'linear-gradient(135deg, #13100D, #2B2219)',
+      bookGoldDark: '#CFA365',
+      bookGoldLight: '#F5DEB3',
+      bookGoldGradient: 'linear-gradient(135deg, #CFA365 0%, #F5DEB3 50%, #CFA365 100%)',
+      bookDeskAccent: 'radial-gradient(circle, rgba(207, 163, 101, 0.16) 0%, rgba(24, 20, 16, 0) 70%)',
+      bookTextDark: '#2B2219',
+      bookTextMuted: '#685C50'
     },
     // 2. Ciepły brąz / Mokate & Miedź
     'mono-brown': {
@@ -56,7 +82,9 @@
       bookGoldDark: '#D68938',
       bookGoldLight: '#F7BC72',
       bookGoldGradient: 'linear-gradient(135deg, #D68938 0%, #F7BC72 50%, #D68938 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(214, 137, 56, 0.18) 0%, rgba(26, 18, 11, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(214, 137, 56, 0.18) 0%, rgba(26, 18, 11, 0) 70%)',
+      bookTextDark: '#2B1B10',
+      bookTextMuted: '#6D5847'
     },
     // 3. Monochromatyczny / Grafit & Platyna
     'mono': {
@@ -79,7 +107,9 @@
       bookGoldDark: '#A2B4C7',
       bookGoldLight: '#E1E9F0',
       bookGoldGradient: 'linear-gradient(135deg, #A2B4C7 0%, #E1E9F0 50%, #A2B4C7 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(162, 180, 199, 0.15) 0%, rgba(18, 20, 23, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(162, 180, 199, 0.15) 0%, rgba(18, 20, 23, 0) 70%)',
+      bookTextDark: '#1E252D',
+      bookTextMuted: '#586574'
     },
     // 4. Raum 1 / Piaskowiec & Złocisty dąb
     'raum_1': {
@@ -102,7 +132,9 @@
       bookGoldDark: '#DA993B',
       bookGoldLight: '#F7CF79',
       bookGoldGradient: 'linear-gradient(135deg, #DA993B 0%, #F7CF79 50%, #DA993B 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(218, 153, 59, 0.16) 0%, rgba(28, 21, 16, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(218, 153, 59, 0.16) 0%, rgba(28, 21, 16, 0) 70%)',
+      bookTextDark: '#2E2017',
+      bookTextMuted: '#6A5A4D'
     },
     // 5. Raum 2 / Szmaragd & Ocean Teal
     'raum_2': {
@@ -125,7 +157,9 @@
       bookGoldDark: '#31BCA6',
       bookGoldLight: '#7CECDA',
       bookGoldGradient: 'linear-gradient(135deg, #31BCA6 0%, #7CECDA 50%, #31BCA6 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(49, 188, 166, 0.16) 0%, rgba(10, 26, 28, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(49, 188, 166, 0.16) 0%, rgba(10, 26, 28, 0) 70%)',
+      bookTextDark: '#102A2D',
+      bookTextMuted: '#446468'
     },
     // 6. Raum 3
     'raum_3': {
@@ -148,7 +182,9 @@
       bookGoldDark: '#d2aa79',
       bookGoldLight: '#e7dcc0',
       bookGoldGradient: 'linear-gradient(135deg, #d2aa79 0%, #e7dcc0 50%, #d2aa79 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(210, 170, 121, 0.16) 0%, rgba(28, 24, 20, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(210, 170, 121, 0.16) 0%, rgba(28, 24, 20, 0) 70%)',
+      bookTextDark: '#342A1D',
+      bookTextMuted: '#695D4F'
     },
     // 7. Abstract / Fiolet & Neon Złoto
     'abstract': {
@@ -171,7 +207,9 @@
       bookGoldDark: '#A162F7',
       bookGoldLight: '#D6B4FE',
       bookGoldGradient: 'linear-gradient(135deg, #A162F7 0%, #D6B4FE 50%, #A162F7 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(161, 98, 247, 0.16) 0%, rgba(17, 15, 34, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(161, 98, 247, 0.16) 0%, rgba(17, 15, 34, 0) 70%)',
+      bookTextDark: '#1D1936',
+      bookTextMuted: '#575276'
     },
     // 8. 6.jpg (Ciepły orzech & Szampan)
     '6.jpg': {
@@ -194,7 +232,9 @@
       bookGoldDark: '#ce9f67',
       bookGoldLight: '#e2d3b0',
       bookGoldGradient: 'linear-gradient(135deg, #ce9f67 0%, #e2d3b0 50%, #ce9f67 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(206, 159, 103, 0.16) 0%, rgba(27, 23, 19, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(206, 159, 103, 0.16) 0%, rgba(27, 23, 19, 0) 70%)',
+      bookTextDark: '#33271A',
+      bookTextMuted: '#685949'
     },
     // 9. DE1 / Niemiecka flaga & Złoto
     'de1': {
@@ -217,7 +257,9 @@
       bookGoldDark: '#E5A224',
       bookGoldLight: '#FCD46A',
       bookGoldGradient: 'linear-gradient(135deg, #E5A224 0%, #FCD46A 50%, #E5A224 100%)',
-      bookDeskAccent: 'radial-gradient(circle, rgba(229, 162, 36, 0.16) 0%, rgba(18, 19, 22, 0) 70%)'
+      bookDeskAccent: 'radial-gradient(circle, rgba(229, 162, 36, 0.16) 0%, rgba(18, 19, 22, 0) 70%)',
+      bookTextDark: '#1C1F24',
+      bookTextMuted: '#585F6B'
     }
   };
 
@@ -344,6 +386,9 @@
     const navyDeepRgb = bgDarkRgb;
     const navyMediumRgb = hslToRgb(bgDarkH, Math.min(50, bgDarkS + 15), Math.min(22, bgDarkL + 10));
 
+    const bookTextDarkRgb = hslToRgb(bgDarkH, Math.min(30, bgDarkS + 10), 16);
+    const bookTextMutedRgb = hslToRgb(bgDarkH, Math.min(25, bgDarkS + 5), 40);
+
     return {
       bgDark: rgbToHex(bgDarkRgb[0], bgDarkRgb[1], bgDarkRgb[2]),
       bgSurfaceGlass: `rgba(${glassR}, ${glassG}, ${glassB}, 0.90)`,
@@ -364,7 +409,9 @@
       bookGoldDark: rgbToHex(accent1Rgb[0], accent1Rgb[1], accent1Rgb[2]),
       bookGoldLight: rgbToHex(accent2Rgb[0], accent2Rgb[1], accent2Rgb[2]),
       bookGoldGradient: `linear-gradient(135deg, ${rgbToHex(accent1Rgb[0], accent1Rgb[1], accent1Rgb[2])} 0%, ${rgbToHex(accent2Rgb[0], accent2Rgb[1], accent2Rgb[2])} 50%, ${rgbToHex(accent1Rgb[0], accent1Rgb[1], accent1Rgb[2])} 100%)`,
-      bookDeskAccent: `radial-gradient(circle, rgba(${accent1Rgb[0]}, ${accent1Rgb[1]}, ${accent1Rgb[2]}, 0.16) 0%, rgba(${glassR}, ${glassG}, ${glassB}, 0) 70%)`
+      bookDeskAccent: `radial-gradient(circle, rgba(${accent1Rgb[0]}, ${accent1Rgb[1]}, ${accent1Rgb[2]}, 0.16) 0%, rgba(${glassR}, ${glassG}, ${glassB}, 0) 70%)`,
+      bookTextDark: rgbToHex(bookTextDarkRgb[0], bookTextDarkRgb[1], bookTextDarkRgb[2]),
+      bookTextMuted: rgbToHex(bookTextMutedRgb[0], bookTextMutedRgb[1], bookTextMutedRgb[2])
     };
   }
 
@@ -414,6 +461,12 @@
     root.style.setProperty('--desk-accent', palette.bookDeskAccent);
     root.style.setProperty('--accent-1', palette.accent1);
     root.style.setProperty('--accent-2', palette.accent2);
+    root.style.setProperty('--text-primary', palette.textPrimary);
+    root.style.setProperty('--text-secondary', palette.textSecondary);
+    root.style.setProperty('--text-muted', palette.bookTextMuted || palette.textMuted);
+    root.style.setProperty('--text-dark', palette.bookTextDark || palette.bookNavyMedium || '#1E2E3E');
+    root.style.setProperty('--book-text-dark', palette.bookTextDark || palette.bookNavyMedium || '#1E2E3E');
+    root.style.setProperty('--book-text-muted', palette.bookTextMuted || palette.textMuted || '#627D98');
 
     if (document.body) {
       document.body.style.backgroundColor = palette.bgDark;
@@ -447,6 +500,14 @@
           root.style.setProperty('--gold-gradient', palette.bookGoldGradient);
           root.style.setProperty('--accent-navy', palette.bookAccentNavy);
           root.style.setProperty('--desk-accent', palette.bookDeskAccent);
+          root.style.setProperty('--accent-1', palette.accent1);
+          root.style.setProperty('--accent-2', palette.accent2);
+          root.style.setProperty('--text-primary', palette.textPrimary);
+          root.style.setProperty('--text-secondary', palette.textSecondary);
+          root.style.setProperty('--text-muted', palette.bookTextMuted || palette.textMuted);
+          root.style.setProperty('--text-dark', palette.bookTextDark || palette.bookNavyMedium || '#1E2E3E');
+          root.style.setProperty('--book-text-dark', palette.bookTextDark || palette.bookNavyMedium || '#1E2E3E');
+          root.style.setProperty('--book-text-muted', palette.bookTextMuted || palette.textMuted || '#627D98');
           if (doc.body) {
             doc.body.style.backgroundColor = palette.bgDark;
             if (wallpaperUrl) doc.body.style.backgroundImage = `url('${wallpaperUrl}')`;
