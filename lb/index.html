@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../fontawesome/css/fontawesome-all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.2">
+    <link rel="stylesheet" href="css/style.css?v=3.3">
     
     <style>
         /* Specific enhancements for Gregor Skrzeszewski's profile content */
@@ -725,6 +725,19 @@
     <script>
         function openPdfModal(event) {
             if (event) { event.preventDefault(); event.stopPropagation(); }
+            // If inside parent iframe (e.g. index.html), delegate opening to parent window modal
+            try {
+                if (window.parent && window.parent !== window && typeof window.parent.openPdfModalMain === 'function') {
+                    window.parent.openPdfModalMain(event);
+                    return;
+                }
+            } catch (e) {}
+            try {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: 'openPdfModal' }, '*');
+                    return;
+                }
+            } catch (e) {}
             var modal = document.getElementById('pdf-modal');
             if (modal) {
                 modal.style.display = 'flex';
@@ -732,6 +745,17 @@
         }
         function closePdfModal(event) {
             if (event) { event.preventDefault(); event.stopPropagation(); }
+            try {
+                if (window.parent && window.parent !== window && typeof window.parent.closePdfModalMain === 'function') {
+                    window.parent.closePdfModalMain(event);
+                    return;
+                }
+            } catch (e) {}
+            try {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: 'closePdfModal' }, '*');
+                }
+            } catch (e) {}
             var modal = document.getElementById('pdf-modal');
             if (modal) {
                 modal.style.display = 'none';

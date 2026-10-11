@@ -11,3 +11,4 @@ tekst.txt
 
 # FreeFileSync database
 .sync.ffs_db
+__pycache__/

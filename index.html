@@ -17,7 +17,7 @@
     <meta name="author" content="Gregor Skrzeszewski">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.projekt-traum.de/">
-    <meta name="google-site-verification" content="kFQe7M4pp2S36lrXTCvuadDeDV0M24EkIlyevZyptUM">
+    <meta name="google-site-verification" content="ztadd6GYB3jfmYF7EOFatVtZmvykxlGv8ehiSlozyg4">
 
     <!-- ═══════════════════════════════════════════════════════════
          Open Graph – Vorschau auf Facebook, LinkedIn, WhatsApp
@@ -117,7 +117,7 @@
     <link rel="stylesheet" href="fontawesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-    <link rel="stylesheet" href="css/tooplate-style.css?v=13.8">
+    <link rel="stylesheet" href="css/tooplate-style.css?v=26.0">
 
     <script>
         document.documentElement.classList.add("js");
@@ -131,13 +131,13 @@
     <!-- Interactive Book Overlay (Lebenslauf - CV_4) -->
     <div id="book-overlay">
         <button id="close-book-overlay" title="Schließen"><i class="fas fa-times"></i></button>
-        <iframe src="lb/index.html?v=3.6" title="Lebenslauf"></iframe>
+        <iframe src="lb/index.html?v=3.8" title="Lebenslauf"></iframe>
     </div>
 
     <!-- Interactive Blog Overlay (Blog) -->
     <div id="blog-overlay">
         <button id="close-blog-overlay" title="Schließen"><i class="fas fa-times"></i></button>
-        <iframe src="blog/index.html?v=3.3" title="Blog"></iframe>
+        <iframe src="blog/index.html?v=3.4" title="Blog"></iframe>
     </div>
 
     <!-- Interactive Contact Overlay (Kontakt) -->
@@ -247,7 +247,7 @@
 
     <div id="tm-bg"></div>
 
-    <!-- Interaktywna warstwa tapety: Animowana ramka fotograficzna w centrum, wizytówka po lewej oraz panel nawigacyjny na dębowej desce -->
+    <!-- Interaktywna warstwa tapety: Animowana ramka fotograficzna w centrum, wizytówka po lewej, animowany szkicownik w lewym dolnym rogu oraz panel nawigacyjny na dębowej desce -->
     <div class="tm-wallpaper-interactive-layer">
         <!-- Lewy panel wizytówki na kamiennym kafelku (pojedynczy baner rozszerzony x2) -->
         <div class="tm-stone-brand-panel" aria-label="Projekt Traum Informacje">
@@ -259,6 +259,16 @@
             </header>
         </div>
 
+        <!-- Animacja szkiców architektonicznych w lewym dolnym rogu (zakrywająca statyczny szkic na tapecie) -->
+        <div class="tm-sketch-frame" id="tm-sketch-frame" title="Projekt Traum - Architekturskizzen">
+            <div class="tm-sketch-slideshow">
+                <div class="tm-sketch-slide active" style="background-image: url('img/sketches/sketch_1.webp');"></div>
+                <div class="tm-sketch-slide" style="background-image: url('img/sketches/sketch_2.webp');"></div>
+                <div class="tm-sketch-slide" style="background-image: url('img/sketches/sketch_3.webp');"></div>
+                <div class="tm-sketch-slide" style="background-image: url('img/sketches/sketch_4.webp');"></div>
+            </div>
+        </div>
+
         <!-- Centralna animacja ze zdjęciami wnętrz -->
         <div class="tm-wallpaper-frame" id="tm-wallpaper-frame" title="Projekt Traum - Innenraumübersicht">
             <div class="tm-frame-slideshow">
@@ -266,6 +276,16 @@
                 <div class="tm-frame-slide" style="background-image: url('img/rooms/salon.webp');"></div>
                 <div class="tm-frame-slide" style="background-image: url('img/rooms/flur.webp');"></div>
                 <div class="tm-frame-slide" style="background-image: url('img/rooms/bad.webp');"></div>
+            </div>
+        </div>
+
+        <!-- Animowany baner filozofii na mosiężnym pasku po prawej stronie -->
+        <div class="tm-banner-frame" id="tm-brass-banner-frame" title="Projekt Traum - Philosophie">
+            <div class="tm-banner-slideshow">
+                <div class="tm-banner-slide active" style="background-image: url('img/banner/ban_1.webp');"></div>
+                <div class="tm-banner-slide" style="background-image: url('img/banner/ban_2.webp');"></div>
+                <div class="tm-banner-slide" style="background-image: url('img/banner/ban_3.webp');"></div>
+                <div class="tm-banner-slide" style="background-image: url('img/banner/ban_4.webp');"></div>
             </div>
         </div>
 
@@ -292,34 +312,30 @@
             <div class="tm-oak-divider"></div>
 
             <div class="tm-oak-social-links">
-                <div class="tm-oak-social-row">
-                    <a href="https://www.facebook.com/profile.php?id=61590328182499" target="_blank"
-                        rel="noopener noreferrer" class="tm-oak-social-link" title="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://x.com/_Projekt_Traum" target="_blank" rel="noopener noreferrer"
-                        class="tm-oak-social-link" title="X">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="tm-x-svg">
-                            <path
-                                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-                                fill="currentColor" />
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/_projekt_traum/" target="_blank" rel="noopener noreferrer"
-                        class="tm-oak-social-link" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                <div class="tm-oak-social-row">
-                    <a href="https://github.com/Skorpion-DELL" target="_blank" rel="noopener noreferrer"
-                        class="tm-oak-social-link" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/projekt-traum-b64201415" target="_blank"
-                        rel="noopener noreferrer" class="tm-oak-social-link" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
+                <a href="https://www.facebook.com/profile.php?id=61590328182499" target="_blank"
+                    rel="noopener noreferrer" class="tm-oak-social-link" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/_Projekt_Traum" target="_blank" rel="noopener noreferrer"
+                    class="tm-oak-social-link" title="X">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="tm-x-svg">
+                        <path
+                            d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/_projekt_traum/" target="_blank" rel="noopener noreferrer"
+                    class="tm-oak-social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/Skorpion-DELL" target="_blank" rel="noopener noreferrer"
+                    class="tm-oak-social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/projekt-traum-b64201415" target="_blank"
+                    rel="noopener noreferrer" class="tm-oak-social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
             </div>
         </nav>
 
@@ -678,8 +694,9 @@
     <script src="slick/slick.min.js"></script> <!-- http://kenwheeler.github.io/slick/ -->
     <script src="js/anime.min.js"></script> <!-- http://animejs.com/ -->
     <script src="js/theme-extractor.js"></script>
-    <script src="js/frame-slider.js"></script>
+    <script src="js/frame-slider.js?v=19.0"></script>
     <script src="js/main.js?v=2.3"></script>
+    <script src="js/pos-helper.js?v=1.0"></script>
     <script>
         function openBlogOverlay(event) {
             if (event) { event.preventDefault(); event.stopPropagation(); }
@@ -751,6 +768,12 @@
             if (modal) {
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
+
+                // Temporarily hide parent overlay close buttons to prevent any overlap or accidental tap
+                var closeBookBtn = document.getElementById('close-book-overlay');
+                if (closeBookBtn) closeBookBtn.style.display = 'none';
+                var closeBlogBtn = document.getElementById('close-blog-overlay');
+                if (closeBlogBtn) closeBlogBtn.style.display = 'none';
             }
         }
         function closePdfModalMain(event) {
@@ -759,8 +782,51 @@
             if (modal) {
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
+
+                // Restore parent overlay close buttons
+                var closeBookBtn = document.getElementById('close-book-overlay');
+                if (closeBookBtn) closeBookBtn.style.display = 'flex';
+                var closeBlogBtn = document.getElementById('close-blog-overlay');
+                if (closeBlogBtn) closeBlogBtn.style.display = 'flex';
             }
         }
+
+        // Listen for postMessage from iframes (Flipbook CV / Blog)
+        window.addEventListener('message', function (event) {
+            if (event.data && event.data.action === 'openPdfModal') {
+                openPdfModalMain();
+            } else if (event.data && event.data.action === 'closePdfModal') {
+                closePdfModalMain();
+            }
+        });
+
+        // Global Escape key handler
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                var pdfModal = document.getElementById('pdf-modal-main');
+                if (pdfModal && pdfModal.style.display === 'flex') {
+                    closePdfModalMain();
+                    return;
+                }
+                var contactOverlay = document.getElementById('contact-overlay');
+                if (contactOverlay && contactOverlay.style.display === 'flex') {
+                    closeContactOverlay();
+                    return;
+                }
+                var bookOverlay = document.getElementById('book-overlay');
+                if (bookOverlay && bookOverlay.style.display === 'block') {
+                    var closeBtn = document.getElementById('close-book-overlay');
+                    if (closeBtn) closeBtn.click();
+                    return;
+                }
+                var blogOverlay = document.getElementById('blog-overlay');
+                if (blogOverlay && blogOverlay.style.display === 'block') {
+                    var closeBlog = document.getElementById('close-blog-overlay');
+                    if (closeBlog) closeBlog.click();
+                    return;
+                }
+            }
+        });
 
         function setupFooter() {
             var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;

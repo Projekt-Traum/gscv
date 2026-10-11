@@ -1,21 +1,20 @@
 /**
- * Animated Moodboard Photo Frame Controller
+ * Animated Moodboard Photo Frame & Sketch Slideshow Controller
  * Projekt Traum - Gregor Skrzeszewski
  */
 (function () {
   'use strict';
 
-  function initFrameSlider() {
-    const frame = document.getElementById('tm-wallpaper-frame');
-    if (!frame) return;
+  function setupSlideshow(containerId, slideClass, intervalMs, initialOffsetMs) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-    const slides = frame.querySelectorAll('.tm-frame-slide');
+    const slides = container.querySelectorAll(slideClass);
     if (slides.length <= 1) return;
 
     let currentIndex = 0;
     let timer = null;
     let isPaused = false;
-    const intervalMs = 4500;
 
     function showSlide(index) {
       if (index < 0) index = slides.length - 1;
@@ -49,28 +48,45 @@
       }
     }
 
-    // Interakcje myszą
-    frame.addEventListener('mouseenter', function () {
+    // Interakcje myszą - pauza na hover
+    container.addEventListener('mouseenter', function () {
       isPaused = true;
     });
 
-    frame.addEventListener('mouseleave', function () {
+    container.addEventListener('mouseleave', function () {
       isPaused = false;
     });
 
-    // Kliknięcie w ramkę przełącza na kolejny slajd
-    frame.addEventListener('click', function () {
+    // Kliknięcie w element przełącza na kolejny slajd
+    container.addEventListener('click', function () {
       showSlide(currentIndex + 1);
       startTimer();
     });
 
-    // Start pętli
-    startTimer();
+    // Start pętli z opcjonalnym przesunięciem czasowym
+    if (initialOffsetMs) {
+      setTimeout(function () {
+        startTimer();
+      }, initialOffsetMs);
+    } else {
+      startTimer();
+    }
+  }
+
+  function initAllSliders() {
+    // 1. Centralna ramka ze zdjęciami wnętrz
+    setupSlideshow('tm-wallpaper-frame', '.tm-frame-slide', 4500, 0);
+
+    // 2. Baner filozofii na mosiężnym pasku po prawej stronie (przesunięty o 1.5s)
+    setupSlideshow('tm-brass-banner-frame', '.tm-banner-slide', 4500, 1500);
+
+    // 3. Szkicownik architektoniczny w lewym dolnym rogu (przesunięty w fazie o 3.0s)
+    setupSlideshow('tm-sketch-frame', '.tm-sketch-slide', 4500, 3000);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFrameSlider);
+    document.addEventListener('DOMContentLoaded', initAllSliders);
   } else {
-    initFrameSlider();
+    initAllSliders();
   }
 })();

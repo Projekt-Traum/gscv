@@ -4,6 +4,127 @@
    1. CZCIONKI, ZMIENNE CSS (:root) I PODSTAWOWE STYLE (Reset / Body / Przyciski)
    ========================================================================== */
 :root {
+  /* ═══════════════════════════════════════════════════════════════
+     POZYCJONOWANIE OBIEKTÓW NA TAPECIE (OBJECT POSITIONING SYSTEM)
+     Zmieniaj poniższe wartości (w % lub px), aby DOWOLNIE przesuwać,
+     skalować, obracać i zmieniać rozmiary każdego obiektu w jednym miejscu!
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* 1. WIZYTÓWKA PROJEKT TRAUM (Lewy kamienny kafelek / Brand Panel) */
+  --brand-x: 48%;
+  /* Pozycja pozioma X (od lewej krawędzi) */
+  --brand-y: 25%;
+  /* Pozycja pionowa Y (od góry) */
+  --brand-width: 22.32%;
+  /* Szerokość baneru */
+  --brand-min-width: 306px;
+  /* Minimalna szerokość */
+  --brand-max-width: 612px;
+  /* Maksymalna szerokość */
+  --brand-scale: 1.20;
+  /* Skala (np. 1.05 = powiększenie o 5%) */
+  --brand-rotate: 0deg;
+  /* Obrót (np. 2deg, -1.5deg) */
+  --brand-z-index: 10;
+  /* Kolejność nakładania warstw */
+
+  /* 2. CENTRALNA RAMKA ZE ZDJĘCIAMI WNĘTRZ (Photo Moodboard Frame) */
+  --photo-frame-x: 78%;
+  /* Pozycja pozioma X */
+  --photo-frame-y: 35.5%;
+  /* Pozycja pionowa Y */
+  --photo-frame-width: 22.19%;
+  /* Szerokość ramki */
+  --photo-frame-height: 35%;
+  /* Wysokość ramki */
+  --photo-frame-scale: 1;
+  /* Skala wielkości */
+  --photo-frame-rotate: 0deg;
+  /* Kąt obrotu */
+  --photo-frame-radius: 4px;
+  /* Zaokrąglenie rogów ramki */
+  --photo-frame-z-index: 10;
+  /* Kolejność warstw */
+
+  /* 3. ANIMOWANY SZKICOWNIK ARCHITEKTONICZNY (Lewy dolny róg / Sketch Frame) */
+  --sketch-x: 18.85%;
+  /* Pozycja pozioma X */
+  --sketch-y: 81%;
+  /* Pozycja pionowa Y */
+  --sketch-width: 13.125%;
+  /* Szerokość szkicownika */
+  --sketch-height: 25.925%;
+  /* Wysokość szkicownika */
+  --sketch-scale: 1;
+  /* Skala wielkości */
+  --sketch-rotate: 0deg;
+  /* Kąt obrotu */
+  --sketch-z-index: 5;
+  /* Kolejność warstw */
+
+  /* 4. MOSIĘŻNY BANER FILOZOFII (Prawy pasek / Brass Banner) */
+  --banner-x: auto;
+  /* Pozycja pozioma od lewej (lub 'auto') */
+  --banner-right: 0%;
+  /* Pozycja od prawej krawędzi (np. 0% lub 10px) */
+  --banner-y: 50.0%;
+  /* Pozycja pionowa Y */
+  --banner-width: 24.22%;
+  /* Szerokość baneru */
+  --banner-height: 6.02%;
+  /* Wysokość baneru */
+  --banner-scale: 1;
+  /* Skala wielkości */
+  --banner-rotate: 0deg;
+  /* Kąt obrotu */
+  --banner-z-index: 5;
+  /* Kolejność warstw */
+
+  /* 5. PANEL NAWIGACJI NA DĘBOWEJ DESCE (Oak Nav Panel) */
+  --oak-nav-x: 78.2%;
+  /* Pozycja pozioma X */
+  --oak-nav-y: 68%;
+  /* Pozycja pionowa Y */
+  --oak-nav-width: auto;
+  /* Szerokość panelu nawigacji */
+  --oak-nav-min-width: 360px;
+  /* Minimalna szerokość */
+  --oak-nav-max-width: 620px;
+  /* Maksymalna szerokość */
+  --oak-nav-scale: 1;
+  /* Skala wielkości */
+  --oak-nav-rotate: 0deg;
+  /* Kąt obrotu */
+  --oak-nav-z-index: 10;
+  /* Kolejność warstw */
+
+  /* 6. STOPKA STRONY NA TAPECIE (Desktop Wallpaper Footer) */
+  --footer-x: 87%;
+  /* Pozycja pozioma X */
+  --footer-y: 90%;
+  /* Pozycja pionowa Y */
+  --footer-scale: 1.25;
+  /* Skala wielkości */
+  --footer-rotate: 0deg;
+  /* Kąt obrotu */
+  --footer-z-index: 25;
+  /* Kolejność warstw */
+
+  /* 7. MODEL 3D (Opcjonalny kontener) */
+  --model-3d-x: auto;
+  /* Pozycja X od lewej */
+  --model-3d-right: 15%;
+  /* Pozycja od prawej krawędzi */
+  --model-3d-y: 40%;
+  /* Pozycja pionowa Y */
+  --model-3d-scale: 1;
+  /* Skala wielkości */
+  --model-3d-z-index: 1;
+  /* Kolejność warstw */
+
+  /* ═══════════════════════════════════════════════════════════════
+     KOLORYSTYKA, TYPOGRAFIA I MOTYW GRAFICZNY (THEME SYSTEM)
+     ═══════════════════════════════════════════════════════════════ */
   --bg-dark: #0e1013;
   /* Blueprint Charcoal / Deep Graphite */
   --bg-surface-glass: rgba(14, 16, 20, 0.90);
@@ -156,14 +277,14 @@ body,
   pointer-events: auto;
 }
 
-/* Domyślne tło strony (SVG/Obrazowe) */
+/* Domyślne tło strony (SVG/Obrazowe 6K 5760x3240 px) */
 #tm-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../img/wal1.webp);
+  background-image: url(../img/wal1_5760x3240.webp?v=1.0);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -186,8 +307,8 @@ body,
    ========================================================================== */
 .tm-wallpaper-interactive-layer {
   position: fixed;
-  top: 49.5%;
-  left: 49.5%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: max(100vw, calc(100vh * 16 / 9));
   height: max(100vh, calc(100vw * 9 / 16));
@@ -202,16 +323,16 @@ body,
    ═══════════════════════════════════════════════════════════════ */
 .tm-stone-brand-panel {
   position: absolute;
-  left: 23%;
-  top: 35.5%;
-  transform: translate(-50%, -50%);
-  width: 22.32%;
-  min-width: 306px;
-  max-width: 612px;
+  left: var(--brand-x, 23%);
+  top: var(--brand-y, 34.5%);
+  transform: translate(-50%, -50%) rotate(var(--brand-rotate, 0deg)) scale(var(--brand-scale, 1));
+  width: var(--brand-width, 22.32%);
+  min-width: var(--brand-min-width, 306px);
+  max-width: var(--brand-max-width, 612px);
   display: flex;
   flex-direction: column;
   pointer-events: auto;
-  z-index: 10;
+  z-index: var(--brand-z-index, 10);
   user-select: none;
 }
 
@@ -309,13 +430,13 @@ body,
 
 .tm-wallpaper-frame {
   position: absolute;
-  left: 51.03%;
-  top: 48.66%;
-  transform: translate(-50%, -50%);
-  width: 22.19%;
-  height: 44.59%;
+  left: var(--photo-frame-x, 51.03%);
+  top: var(--photo-frame-y, 48.66%);
+  transform: translate(-50%, -50%) rotate(var(--photo-frame-rotate, 0deg)) scale(var(--photo-frame-scale, 1));
+  width: var(--photo-frame-width, 22.19%);
+  height: var(--photo-frame-height, 44.59%);
   background: transparent;
-  border-radius: 4px;
+  border-radius: var(--photo-frame-radius, 4px);
   box-shadow:
     0 20px 45px rgba(0, 0, 0, 0.4),
     0 4px 14px rgba(0, 0, 0, 0.22);
@@ -325,11 +446,12 @@ body,
   overflow: hidden;
   pointer-events: auto;
   cursor: pointer;
+  z-index: var(--photo-frame-z-index, 10);
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
 }
 
 .tm-wallpaper-frame:hover {
-  transform: translate(-50%, -50.8%) scale(1.02);
+  transform: translate(-50%, -50.8%) rotate(var(--photo-frame-rotate, 0deg)) scale(calc(var(--photo-frame-scale, 1) * 1.02));
   box-shadow:
     0 28px 60px rgba(0, 0, 0, 0.52),
     0 8px 24px rgba(0, 0, 0, 0.28),
@@ -365,41 +487,168 @@ body,
   z-index: 2;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   ANIMOWANY SZKICOWNIK W LEWYM DOLNYM ROGU (Zakrywający szkic na tapecie)
+   ═══════════════════════════════════════════════════════════════ */
+.tm-sketch-frame {
+  position: absolute;
+  left: var(--sketch-x, 18.85%);
+  top: var(--sketch-y, 81%);
+  transform: translate(-50%, -50%) rotate(var(--sketch-rotate, 0deg)) scale(var(--sketch-scale, 1));
+  width: var(--sketch-width, 13.125%);
+  height: var(--sketch-height, 25.925%);
+  background: transparent;
+  border-radius: 6px;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: var(--sketch-z-index, 5);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tm-sketch-frame:hover {
+  transform: translate(-50%, -50%) rotate(var(--sketch-rotate, 0deg)) scale(calc(var(--sketch-scale, 1) * 1.0));
+  box-shadow: none;
+}
+
+.tm-sketch-slideshow {
+  display: none;
+  position: relative;
+  width: 97%;
+  height: 85%;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+.tm-sketch-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  opacity: 0;
+  transform: scale(1.0);
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1), transform 5s ease-out;
+  will-change: opacity, transform;
+}
+
+.tm-sketch-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMOWANY BANER FILOZOFII NA METALOWYM PASKU PO PRAWEJ STRONIE
+   (Dosunięty do prawej krawędzi strony, zakrywający mosiężny pasek)
+   ═══════════════════════════════════════════════════════════════ */
+.tm-banner-frame {
+  position: absolute;
+  left: var(--banner-x, auto);
+  right: var(--banner-right, 0);
+  top: var(--banner-y, 50.0%);
+  transform: translateY(-50%) rotate(var(--banner-rotate, 0deg)) scale(var(--banner-scale, 1));
+  width: var(--banner-width, 24.22%);
+  height: var(--banner-height, 6.02%);
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: var(--banner-z-index, 5);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tm-banner-frame:hover {
+  transform: translateY(-50%) rotate(var(--banner-rotate, 0deg)) scale(calc(var(--banner-scale, 1) * 1.0));
+  box-shadow: none;
+}
+
+.tm-banner-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.tm-banner-slide {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  opacity: 0;
+  transform: scale(1.0);
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.tm-banner-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
 /* ==========================================================================
    PANEL NAWIGACJI NA DĘBOWEJ DESCE (Oak Board Navigation)
    Wysunięty na gładkiej połowie deski w prawym górnym rogu tapety
    ========================================================================== */
 .tm-oak-nav-panel {
   position: absolute;
-  left: 82%;
-  top: 71%;
-  transform: translate(-50%, -50%);
-  width: 9.38%;
-  min-width: 140px;
-  max-width: 360px;
+  left: var(--oak-nav-x, 82%);
+  top: var(--oak-nav-y, 71%);
+  transform: translate(-50%, -50%) rotate(var(--oak-nav-rotate, 0deg)) scale(var(--oak-nav-scale, 1));
+  width: var(--oak-nav-width, auto);
+  min-width: var(--oak-nav-min-width, 360px);
+  max-width: var(--oak-nav-max-width, 620px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-  z-index: 10;
+  z-index: var(--oak-nav-z-index, 10);
   user-select: none;
 }
 
 .tm-oak-nav-buttons {
   display: flex;
-  flex-direction: column;
-  gap: clamp(8px, 0.9vh, 16px);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 0.7vw, 14px);
   width: 100%;
 }
 
 .tm-oak-nav-btn {
-  width: 100%;
+  flex: 1;
+  min-width: clamp(105px, 6.5vw, 140px);
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: clamp(8px, 0.7vh + 0.3vw, 14px) clamp(12px, 0.8vw, 20px);
-  gap: clamp(8px, 0.6vw, 14px);
+  justify-content: center;
+  padding: clamp(8px, 0.7vh + 0.3vw, 13px) clamp(20px, 1.1vw, 28px);
+  gap: clamp(6px, 0.5vw, 10px);
   background: rgba(30, 26, 36, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -409,9 +658,9 @@ body,
   cursor: pointer;
   outline: none;
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: clamp(12px, 0.5vh + 0.55vw, 17px);
+  font-size: clamp(12px, 0.45vh + 0.5vw, 16px);
   font-weight: 600;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.5),
     0 0 20px rgba(207, 163, 101, 0.35),
@@ -419,6 +668,7 @@ body,
   transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .tm-oak-nav-btn::before {
@@ -453,8 +703,8 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(18px, 1.2vw, 24px);
-  font-size: 1.15em;
+  width: clamp(16px, 1vw, 22px);
+  font-size: 1.1em;
   color: #CFA365;
   transition: transform 0.3s ease, color 0.3s ease;
   flex-shrink: 0;
@@ -466,38 +716,36 @@ body,
 }
 
 .tm-oak-btn-text {
-  flex: 1;
-  text-align: left;
+  text-align: center;
   white-space: nowrap;
 }
 
 .tm-oak-divider {
-  width: 75%;
+  width: 90%;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(207, 163, 101, 0.6), transparent);
-  margin: clamp(10px, 1.2vh, 18px) auto clamp(8px, 1vh, 14px) auto;
+  margin: clamp(8px, 1vh, 14px) auto;
 }
 
 .tm-oak-social-links {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  gap: clamp(6px, 0.7vh, 10px);
+  gap: clamp(8px, 0.8vw, 14px);
 }
 
 .tm-oak-social-row {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  gap: clamp(8px, 0.7vw, 14px);
+  justify-content: center;
+  gap: clamp(8px, 0.8vw, 14px);
 }
 
 .tm-oak-social-link {
-  width: clamp(26px, 1.75vw, 38px);
-  height: clamp(26px, 1.75vw, 38px);
+  width: clamp(28px, 1.8vw, 38px);
+  height: clamp(28px, 1.8vw, 38px);
   border-radius: 50%;
   background: rgba(18, 16, 22, 0.75);
   backdrop-filter: blur(10px);
@@ -507,7 +755,7 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(11px, 0.72vw, 15px);
+  font-size: clamp(12px, 0.75vw, 16px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   text-decoration: none;
@@ -536,9 +784,9 @@ body,
 footer.tm-wallpaper-footer,
 .tm-wallpaper-footer {
   position: absolute !important;
-  left: 63.5% !important;
-  top: 96% !important;
-  transform: translate(-50%, -50%) !important;
+  left: var(--footer-x, 63.5%) !important;
+  top: var(--footer-y, 96%) !important;
+  transform: translate(-50%, -50%) rotate(var(--footer-rotate, 0deg)) scale(var(--footer-scale, 1)) !important;
   width: auto !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -554,7 +802,7 @@ footer.tm-wallpaper-footer,
   gap: clamp(2px, 0.3vh, 4px) !important;
   text-align: center !important;
   pointer-events: auto !important;
-  z-index: 25 !important;
+  z-index: var(--footer-z-index, 25) !important;
   user-select: none !important;
 }
 
@@ -582,10 +830,11 @@ footer.tm-wallpaper-footer,
 .tm-3d-model-container {
   display: none !important;
   position: absolute;
-  top: 40%;
-  right: 15%;
-  transform: translateY(-50%);
-  z-index: 1;
+  top: var(--model-3d-y, 40%);
+  right: var(--model-3d-right, 15%);
+  left: var(--model-3d-x, auto);
+  transform: translateY(-50%) scale(var(--model-3d-scale, 1));
+  z-index: var(--model-3d-z-index, 1);
   /* Pod treścią strony (#tm-wrap z-index: 2) */
   pointer-events: none;
   /* Nie blokuje interakcji pod myszką */

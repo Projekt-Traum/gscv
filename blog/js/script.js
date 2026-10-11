@@ -691,6 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()}, ${pad(d.getHours())}:${pad(d.getMinutes())}`;
     }
 
+    // Dynamic scaling logic for responsive desktop presentation (100% actual size)
     function adjustScale() {
         const wrapper = document.querySelector('.book-scale-wrapper');
         if (!wrapper) return;
@@ -698,28 +699,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
         
+        // If mobile/tablet layout (width <= 990px), reset style for normal flow
         if (windowWidth <= 990) {
             wrapper.style.transform = '';
             wrapper.style.transformOrigin = '';
+            wrapper.style.left = '';
+            wrapper.style.top = '';
             return;
         }
         
-        // Base dimensions of the 16:9 desktop layout
-        // Scaling matches the wallpaper so the book cover covers the frame across resolutions
-        const scaleW = windowWidth / 1920;
-        const scaleH = windowHeight / 1080;
-        const wallpaperScale = Math.max(scaleW, scaleH);
+        // 100% full scale (1.0) with responsive fit if viewport is smaller than 960x660
+        const fitScale = Math.min((windowWidth - 40) / 960, (windowHeight - 60) / 660);
+        const scale = fitScale >= 1.0 ? 1.0 : Math.max(0.5, fitScale);
         
-        // Ensure 2-page open book + shortcuts tip fit inside viewport (with margins)
-        const maxFitScale = Math.min((windowWidth - 40) / 960, (windowHeight - 40) / 660);
-        const scale = Math.min(wallpaperScale, maxFitScale);
-        
-        // Snap coordinates to exact integer pixels to eliminate sub-pixel font raster blur
-        const targetX = Math.round(windowWidth * 0.5103);
-        const targetY = Math.round(windowHeight * 0.4866);
-        
-        wrapper.style.left = `${targetX}px`;
-        wrapper.style.top = `${targetY}px`;
+        wrapper.style.left = '50%';
+        wrapper.style.top = '50%';
         wrapper.style.transform = `translate3d(-50%, -50%, 0) scale(${scale})`;
         wrapper.style.transformOrigin = 'center center';
     }
